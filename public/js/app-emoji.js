@@ -1,0 +1,4 @@
+// Emoji picker on DM, room and Ludo chat
+function setupGlobalEmojiPickers(){document.addEventListener("click",event=>{const button=event.target.closest("[data-emoji-target]");if(!button)return;const input=$(button.dataset.emojiTarget);const pickerId=button.dataset.emojiTarget==="dmInput"?"dmEmojiPicker":button.dataset.emojiTarget==="duelChatInput"?"duelEmojiPicker":button.dataset.emojiTarget==="ludoChatInput"?"ludoEmojiPicker":"gameEmojiPicker";const picker=$(pickerId);if(!picker)return;picker.classList.toggle("hidden");picker.innerHTML=["😀","😂","😍","🤝","🔥","⚡","🎯","👏","💯","😎","🥳","👑","💪","❤️","🙌","😅"].map(emoji=>`<button type="button" data-emoji="${emoji}">${emoji}</button>`).join("");picker.onclick=e=>{const item=e.target.closest("[data-emoji]");if(!item)return;input.value+=item.dataset.emoji;input.focus();picker.classList.add("hidden");};});}
+setupGlobalEmojiPickers();
+
